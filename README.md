@@ -1,2 +1,2 @@
 # Angular
-Projetos relacionados aos estudos no Angular.
+Projetos relacionados aos estudos com Angular.
