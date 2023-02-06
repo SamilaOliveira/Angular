@@ -25,9 +25,4 @@ export const TarefaRoutes: Routes = [
     component: EditarTarefaComponent
   }
 
-  /*{
-    path: 'tarefas/remover',
-    component: RemoverTarefaComponent
-  }*/
-
 ];
