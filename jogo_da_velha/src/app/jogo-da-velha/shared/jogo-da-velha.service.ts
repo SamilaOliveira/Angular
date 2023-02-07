@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class JogoDaVelhaService {
-  exibirX(posx: number, posY: number): boolean {
-    throw new Error('Method not implemented.');
-  }
 
   private readonly TAM_TAB: number = 3;
   private readonly X: number = 1;
@@ -24,7 +19,12 @@ export class JogoDaVelhaService {
 
   constructor() { }
 
-  //Inicializa o Jogo.
+  /**
+   * Inicializa o Jogo.
+   *
+   * @return void
+   */
+
 
   inicializar(): void {
     this._showInicio = true;
@@ -36,7 +36,11 @@ export class JogoDaVelhaService {
     this.inicializarTabuleiro();
   }
 
-  // Inicializa o tabuleiro do jogo com vazio para todas as posições.
+  /**
+   * Inicializa o tabuleiro do jogo com vazio para todas as posições.
+   *
+   * @return void
+   */
 
   inicializarTabuleiro(): void{
     this.tabuleiro = [this.TAM_TAB];
@@ -45,31 +49,45 @@ export class JogoDaVelhaService {
     }
   }
 
-  // Retorna se a tela de início deve ser exibida.
+  /**
+   * Retorna se a tela de início deve ser exibida.
+   * @return boolean
+   */
 
   get showInicio(): boolean{
     return this._showInicio;
   }
 
-  // Retorna se o tabuleiro deve ser exibido.
+  /**
+   * Retorna se o tabuleiro deve ser exibido.
+   * @return boolean
+   */
 
   get showTabuleiro(): boolean {
     return this._showTabuleiro;
   }
 
-  //Retorna se a tela de fim de jogo deve ser exibida.
+  /**
+   * Retorna se a tela de fim de jogo deve ser exibida.
+   */
 
   get showFinal(): boolean{
     return this._showFinal;
   }
 
-  //Retorna o número do jogador a jogar.
+  /**
+   * Retorna o número do jogador a jogar.
+   * @return number
+   */
 
   get jogador(): number {
     return this._jogador;
   }
 
-  //Exibe o tabuleiro.
+  /**
+   * Exibe o tabuleiro.
+   * @return void
+   */
 
   iniciarJogo(): void {
     this._showInicio = false;
@@ -224,7 +242,19 @@ export class JogoDaVelhaService {
    * @param number posY
    * @return boolean
    */
-  exibirO(posX: number, posY: number): boolean {
+  exibirX(posX: number, posY: number): boolean {
+    return this.tabuleiro[posX][posY] == this.X;
+  }
+
+  /**
+   * Retorna se a peça O deve ser exibida para a
+   * coordenada informada.
+   *
+   * @param number posX
+   * @param number posY
+   * @return boolean
+   */
+   exibirO(posX: number, posY: number): boolean {
     return this.tabuleiro[posX][posY] == this.O;
   }
 
