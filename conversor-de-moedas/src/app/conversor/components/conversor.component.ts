@@ -10,17 +10,17 @@ import { Moeda, Conversao, ConversaoResponse } from '../models';
 })
 export class ConversorComponent implements OnInit {
 
-  private moedas: Moeda[] = [];
-  private conversao!: Conversao;
-  private possuiErro!: boolean;
-  private conversaoResponse!: ConversaoResponse;
+  public moedas: Moeda[] = [];
+  public conversao!: Conversao;
+  public possuiErro!: boolean;
+  public conversaoResponse!: ConversaoResponse;
 
   @ViewChild('conversaoForm', { static: true })
   conversaoForm!: NgForm;
 
   constructor(
-    private moedaService: MoedaService,
-    private conversorService: ConversorService) {}
+    public moedaService: MoedaService,
+    public conversorService: ConversorService) {}
 
   ngOnInit(): void {
     this.moedas = this.moedaService.listarTodas();
@@ -44,7 +44,11 @@ export class ConversorComponent implements OnInit {
    */
   converter(): void{
     if (this.conversaoForm.form.valid) {
-      alert('Convertendo: ' + JSON.stringify(this.conversao));
+      this.conversorService
+        .converter(this.conversao)
+        .subscribe(
+          response => this.conversaoResponse = response,
+          error => this.possuiErro = true);
     }
   }
 
